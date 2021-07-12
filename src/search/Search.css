@@ -1,8 +1,44 @@
 #search {
-  padding-top: 2.5rem;
-  padding-right: 2.5rem;
+  margin: 0px 10px;
 }
 
-#search input {
+#searchBtn {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#filtersBar {
+  margin: 10px;
+}
+
+.chip {
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: transparent;
+}
+
+input[type="text"] {
+  width: 100%;
+  appearance: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
   padding: 10px;
+  transition: all 300ms ease-in-out;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+input:focus::placeholder {
+  color: darkgreen;
+  font-weight: 500;
+}
+
+input:focus {
+  color: green;
+  border: 2px solid greenyellow;
+  box-shadow: 0 1px 7px springgreen, 0 1px 13px seagreen;
 }

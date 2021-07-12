@@ -1,3 +1,3 @@
 export function Messages(): JSX.Element {
-  return <div></div>;
+  return <div>Messages</div>;
 }
