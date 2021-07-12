@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/SEG3125-Module8-Volleyball/static/css/main.a617e044.chunk.css",
-    "main.js": "/SEG3125-Module8-Volleyball/static/js/main.a8318ce5.chunk.js",
-    "main.js.map": "/SEG3125-Module8-Volleyball/static/js/main.a8318ce5.chunk.js.map",
-    "runtime-main.js": "/SEG3125-Module8-Volleyball/static/js/runtime-main.5b1112c2.js",
-    "runtime-main.js.map": "/SEG3125-Module8-Volleyball/static/js/runtime-main.5b1112c2.js.map",
-    "static/js/2.7e87202b.chunk.js": "/SEG3125-Module8-Volleyball/static/js/2.7e87202b.chunk.js",
-    "static/js/2.7e87202b.chunk.js.map": "/SEG3125-Module8-Volleyball/static/js/2.7e87202b.chunk.js.map",
-    "static/js/3.50658bbd.chunk.js": "/SEG3125-Module8-Volleyball/static/js/3.50658bbd.chunk.js",
-    "static/js/3.50658bbd.chunk.js.map": "/SEG3125-Module8-Volleyball/static/js/3.50658bbd.chunk.js.map",
+    "main.css": "/SEG3125-Module8-Volleyball/static/css/main.88322fc4.chunk.css",
+    "main.js": "/SEG3125-Module8-Volleyball/static/js/main.4f61119d.chunk.js",
+    "main.js.map": "/SEG3125-Module8-Volleyball/static/js/main.4f61119d.chunk.js.map",
+    "runtime-main.js": "/SEG3125-Module8-Volleyball/static/js/runtime-main.d6e88cc5.js",
+    "runtime-main.js.map": "/SEG3125-Module8-Volleyball/static/js/runtime-main.d6e88cc5.js.map",
+    "static/js/2.2174e56d.chunk.js": "/SEG3125-Module8-Volleyball/static/js/2.2174e56d.chunk.js",
+    "static/js/2.2174e56d.chunk.js.map": "/SEG3125-Module8-Volleyball/static/js/2.2174e56d.chunk.js.map",
+    "static/js/3.998517a2.chunk.js": "/SEG3125-Module8-Volleyball/static/js/3.998517a2.chunk.js",
+    "static/js/3.998517a2.chunk.js.map": "/SEG3125-Module8-Volleyball/static/js/3.998517a2.chunk.js.map",
     "index.html": "/SEG3125-Module8-Volleyball/index.html",
-    "static/css/main.a617e044.chunk.css.map": "/SEG3125-Module8-Volleyball/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.7e87202b.chunk.js.LICENSE.txt": "/SEG3125-Module8-Volleyball/static/js/2.7e87202b.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/SEG3125-Module8-Volleyball/static/media/logo.6ce24c58.svg"
+    "static/css/main.88322fc4.chunk.css.map": "/SEG3125-Module8-Volleyball/static/css/main.88322fc4.chunk.css.map",
+    "static/js/2.2174e56d.chunk.js.LICENSE.txt": "/SEG3125-Module8-Volleyball/static/js/2.2174e56d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5b1112c2.js",
-    "static/js/2.7e87202b.chunk.js",
-    "static/css/main.a617e044.chunk.css",
-    "static/js/main.a8318ce5.chunk.js"
+    "static/js/runtime-main.d6e88cc5.js",
+    "static/js/2.2174e56d.chunk.js",
+    "static/css/main.88322fc4.chunk.css",
+    "static/js/main.4f61119d.chunk.js"
   ]
 }
