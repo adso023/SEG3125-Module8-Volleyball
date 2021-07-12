@@ -52,6 +52,9 @@ function App(): JSX.Element {
           </h4>
           <i
             className="bi bi-arrow-right btn btn-outline-success"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            title="Click to see expanded list"
             style={{ fontSize: "22px", fontWeight: "bolder" }}
           ></i>
         </div>
@@ -90,6 +93,9 @@ function App(): JSX.Element {
           </h4>
           <i
             className="bi bi-arrow-right btn btn-outline-success"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            title="Click to see expanded list"
             style={{ fontSize: "22px", fontWeight: "bolder" }}
           ></i>
         </div>
