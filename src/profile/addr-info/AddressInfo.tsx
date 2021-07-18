@@ -21,7 +21,16 @@ export function AddressInfo(props: any): JSX.Element {
   return (
     <div>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !addressValid.unitOrHouseNumber
+              ? "House number cannot be empty"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${
@@ -52,7 +61,14 @@ export function AddressInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !addressValid.streetName ? "Name value cannot be empty" : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${
@@ -83,7 +99,12 @@ export function AddressInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${!addressValid.city ? "City cannot be empty" : ""}`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!addressValid.city ? "bg-danger text-white" : ""}`}
@@ -112,7 +133,12 @@ export function AddressInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${!addressValid.country ? "Country cannot be empty" : ""}`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!addressValid.country ? "bg-danger text-white" : ""}`}
@@ -141,7 +167,16 @@ export function AddressInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !addressValid.postalCode
+              ? "Postal code cannot be empty Format H0H 0H0"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${

@@ -1,6 +1,15 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  FormControl,
+  InputGroup,
+  Modal,
+  Row,
+  Toast,
+} from "react-bootstrap";
 import "./Search.css";
 
 // left at selecting an item from the autocomplete list and adding them to cart
@@ -26,7 +35,35 @@ export function Search(): JSX.Element {
       date: string;
       price: string | undefined;
     }[]
-  >([]);
+  >([
+    {
+      lessons: true,
+      tournament: false,
+      title: "Novice Bump and Set Lessons",
+      subTitle: "Bump lessons for beginners",
+      instructor: "John John",
+      date: "July 27, 2021 - July 30, 2021",
+      price: "$100",
+    },
+    {
+      lessons: true,
+      tournament: false,
+      title: "Advanced (Final) Bump and Set Lessons",
+      subTitle: "Bump lessons for those coming from intermediate classes",
+      instructor: "John John",
+      date: "August 10, 2021 - August 13, 2021",
+      price: "$100",
+    },
+    {
+      lessons: false,
+      tournament: true,
+      title: "Tournament - Intermediate challenge",
+      subTitle: "Tournament for intermediate members in the club",
+      date: "August 13, 2021",
+      instructor: undefined,
+      price: undefined,
+    },
+  ]);
   const [autocomplete, setAutocomplete] = useState<JSX.Element[]>([]);
   const [cartItems, setCartItems] = useState<JSX.Element[]>([]);
 
@@ -36,7 +73,7 @@ export function Search(): JSX.Element {
       {
         lessons: true,
         tournament: false,
-        title: "Novie Bump and Set Lessons",
+        title: "Novice Bump and Set Lessons",
         subTitle: "Bump lessons for beginners",
         instructor: "John John",
         date: "July 27, 2021 - July 30, 2021",
@@ -59,6 +96,15 @@ export function Search(): JSX.Element {
         instructor: "John John",
         date: "August 10, 2021 - August 13, 2021",
         price: "$100",
+      },
+      {
+        lessons: true,
+        tournament: false,
+        title: "Spikes Learn to Play",
+        subTitle: "Learn to play the game of volleyball from form to rules",
+        instructor: "John John",
+        date: "August 19, 2021 - August 24, 2021",
+        price: "$150",
       },
       {
         lessons: false,
@@ -121,7 +167,7 @@ export function Search(): JSX.Element {
             style={{ marginRight: "5px" }}
           ></i>
           <h6 className="d-flex justify-content-center align-items-center m-0">
-            No Tournaments
+            No Items In Your Cart
           </h6>
         </div>,
       ]);
@@ -299,6 +345,26 @@ export function Search(): JSX.Element {
     return filtersBar;
   };
 
+  const [checkout, setCheckout] = useState(false);
+  // tslint:disable-next-line: typedef
+  const handleClose = () => setCheckout(false);
+  // tslint:disable-next-line: typedef
+  const handleShow = () => setCheckout(true);
+
+  const [toast, setToast] = useState(false);
+
+  // tslint:disable-next-line: typedef
+  const resetCard = {
+    cardNumber: "4444 4444 4444 4444",
+    cvv2: "444",
+    exp: "04/04",
+  };
+  const [payment, setPayment] = useState({
+    cardNumber: "4444 4444 4444 4444",
+    cvv2: "444",
+    exp: "04/04",
+  });
+
   return (
     <>
       <div id="search" className="d-flex">
@@ -420,36 +486,57 @@ export function Search(): JSX.Element {
               {"Select an item to add it to cart"}
             </div>
 
-            <div
-              className="btn btn-primary"
-              style={{ fontSize: "20px" }}
-              onClick={() => {
-                if (!showCart) {
-                  setShowCart(true);
-                  if (completionListDiv.current && cardListDiv.current) {
-                    completionListDiv.current.style.height = "0";
-                    completionListDiv.current.style.overflow = "hidden";
-                    cardListDiv.current.style.height = "70vh";
-                    cardListDiv.current.style.overflow = "auto";
-                  }
-                } else {
-                  setShowCart(false);
-                  if (completionListDiv.current && cardListDiv.current) {
-                    completionListDiv.current.style.height = "70vh";
-                    completionListDiv.current.style.overflow = "auto";
-                    cardListDiv.current.style.height = "0";
-                    cardListDiv.current.style.overflow = "hidden";
-                  }
-                }
-              }}
-            >
+            <div className="d-flex" style={{ gap: "10px" }}>
               {showCart ? (
-                <i className="bi bi-x-square-fill"></i>
+                <div
+                  className="btn btn-outline-success"
+                  style={{ fontSize: "20px" }}
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Proceed to Checkout"
+                  onClick={handleShow}
+                >
+                  <i className="bi bi-bag-check"></i>
+                </div>
               ) : (
-                <>
-                  <i className="bi bi-cart"></i> {cart.length}
-                </>
+                <></>
               )}
+              <div
+                className="btn btn-primary"
+                style={{ fontSize: "20px" }}
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title={showCart ? "Close Cart View" : "Display Items in Cart"}
+                onClick={() => {
+                  if (!showCart) {
+                    setShowCart(true);
+                    if (completionListDiv.current && cardListDiv.current) {
+                      completionListDiv.current.style.height = "0";
+                      completionListDiv.current.style.overflow = "hidden";
+                      cardListDiv.current.style.height = "70vh";
+                      cardListDiv.current.style.overflow = "auto";
+                    }
+                  } else {
+                    setShowCart(false);
+                    if (completionListDiv.current && cardListDiv.current) {
+                      completionListDiv.current.style.height = "70vh";
+                      completionListDiv.current.style.overflow = "auto";
+                      cardListDiv.current.style.height = "0";
+                      cardListDiv.current.style.overflow = "hidden";
+                    }
+                  }
+                }}
+              >
+                {showCart ? (
+                  <>
+                    <i className="bi bi-x-square-fill"></i>
+                  </>
+                ) : (
+                  <>
+                    <i className="bi bi-cart"></i> {cart.length}
+                  </>
+                )}
+              </div>
             </div>
           </div>
           <div
@@ -476,109 +563,115 @@ export function Search(): JSX.Element {
           {autocomplete}
         </div>
       </div>
-    </>
-  );
-}
-
-export function Search1(): JSX.Element {
-  const [show, setShow] = useState<boolean>(false);
-  const [filterFilters, setFilters] = useState<string[]>([]);
-  const [cart, setCart] = useState<{}[]>([]);
-  const [autocomplete, setAutocomplete] = useState<JSX.Element[]>([]);
-  // tslint:disable-next-line: typedef
-  const handleClose = () => setShow(false);
-  // tslint:disable-next-line: typedef
-  const handleShow = () => setShow(true);
-  // tslint:disable-next-line: typedef
-  const updateAutocomplete = (term: string) => {
-    // tslint:disable-next-line: typedef
-    const getSearch = JSON.parse(localStorage.getItem("search") || "[]");
-    // const filters: string[] = [...filterFilters];
-    let searchItems: JSX.Element[] = [];
-    for (let i: number = 0; i < getSearch.length; i++) {
-      if (
-        filterFilters.length > 0 &&
-        ((filterFilters.includes("lessons") && getSearch[i].lessons) ||
-          (filterFilters.includes("tournaments") && getSearch[i].tournament)) &&
-        getSearch[i].title.includes(term)
-      ) {
-        const div: JSX.Element = (
-          <div
-            key={i}
-            className="item d-flex flex-column mt-2"
-            // tslint:disable-next-line: no-empty
-            onClick={() => {}}
-          >
-            <div className="title">
-              {`${getSearch[i].title}`} &nbsp;
-              {getSearch[i].price !== undefined ? (
-                <i
-                  className="bi bi-currency-dollar"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Payment required"
-                />
-              ) : (
-                <></>
-              )}
-            </div>
-            <div className="text-muted d-flex justify-content-between">
-              <div>{getSearch[i].subTitle}</div>
-              {getSearch[i].instructor !== undefined ? (
-                <div>
-                  <i
-                    className="bi bi-person-fill mr-2"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="left"
-                    title="Instructor"
+      <Modal show={checkout} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Checkout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div>
+            <div>
+              <>
+                <InputGroup className="mb-3">
+                  <InputGroup.Text
+                    id="basic-addon1"
+                    className={`${
+                      payment.cardNumber === "" ? "bg-danger text-white" : ""
+                    }`}
+                  >
+                    <i className="bi bi-credit-card-2-front"></i>
+                  </InputGroup.Text>
+                  <FormControl
+                    className={`${payment.cardNumber === "" ? "error" : ""}`}
+                    value={payment.cardNumber}
+                    onChange={(evt) =>
+                      setPayment({ ...payment, cardNumber: evt.target.value })
+                    }
                   />
-                  {getSearch[i].instructor}
-                </div>
-              ) : (
-                <></>
-              )}
-              <div>
-                <i className="bi bi-calendar mr-2" />
-                {getSearch[i].date}
-              </div>
+                </InputGroup>
+              </>
+              <>
+                <InputGroup className="mb-3">
+                  <InputGroup.Text
+                    id="basic-addon1"
+                    className={`${
+                      payment.cvv2 === "" ? "bg-danger text-white" : ""
+                    }`}
+                  >
+                    <i className="bi bi-credit-card-2-back"></i>
+                  </InputGroup.Text>
+                  <FormControl
+                    className={`${payment.cvv2 === "" ? "error" : ""}`}
+                    value={`${payment.cvv2}`}
+                    onChange={(evt) =>
+                      setPayment({ ...payment, cvv2: evt.target.value })
+                    }
+                  />
+                </InputGroup>
+              </>
+              <>
+                <InputGroup className="mb-3">
+                  <InputGroup.Text
+                    id="basic-addon1"
+                    className={`${
+                      payment.exp === "" ? "bg-danger text-white" : ""
+                    }`}
+                  >
+                    MM/YY
+                  </InputGroup.Text>
+                  <FormControl
+                    className={`${payment.exp === "" ? "error" : ""}`}
+                    value={`${payment.exp}`}
+                    onChange={(evt) =>
+                      setPayment({ ...payment, exp: evt.target.value })
+                    }
+                  />
+                </InputGroup>
+              </>
+            </div>
+            <hr />
+            <div>
+              <h4>Review Cart Items</h4>
+              {cartItems}
             </div>
           </div>
-        );
-        searchItems = [...searchItems, div];
-      }
-    }
-
-    setAutocomplete(searchItems);
-  };
-
-  // tslint:disable-next-line: typedef
-  const handleAutoComplete = (evt: {
-    target: { value: string | undefined };
-  }) => {
-    if (evt.target.value === "" || evt.target.value === undefined) {
-      setAutocomplete([]);
-      return;
-    } else {
-      updateAutocomplete(evt.target.value);
-    }
-  };
-
-  return (
-    <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Filters Modal</Modal.Title>
-        </Modal.Header>
-        <Modal.Body></Modal.Body>
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setPayment(resetCard);
+              handleClose();
+            }}
+          >
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Filters
+          <Button
+            variant="primary"
+            onClick={() => {
+              setToast(true);
+              handleClose();
+            }}
+          >
+            Complete Checkout
           </Button>
         </Modal.Footer>
       </Modal>
+      <div
+        className="p-3"
+        style={{ position: "absolute", top: "0", left: "0" }}
+      >
+        <Toast
+          onClose={() => setToast(false)}
+          show={toast}
+          delay={3000}
+          autohide
+        >
+          <Toast.Header>
+            <strong className="me-auto">Success Checkout Toast</strong>
+          </Toast.Header>
+          <Toast.Body>Items in your cart have been credited</Toast.Body>
+        </Toast>
+      </div>
     </>
   );
 }

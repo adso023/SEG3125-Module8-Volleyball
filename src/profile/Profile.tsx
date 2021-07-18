@@ -22,7 +22,7 @@ export function Profile(): JSX.Element {
     address: {
       streetName: "Some Street St",
       city: "Some City",
-      postalCode: "H0H H0H",
+      postalCode: "H0H 0H0",
       country: "Some Country",
       unitOrHouseNumber: 12,
     },
@@ -113,7 +113,7 @@ export function Profile(): JSX.Element {
               <Card.Body>
                 <div className="header-edit mb-2">
                   <Button
-                    disabled={addrEdit}
+                    disabled={paymEdit}
                     variant="outline-info"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"

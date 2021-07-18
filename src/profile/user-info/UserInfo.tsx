@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
-import { Alert, Button, FormControl, InputGroup, Modal } from "react-bootstrap";
+import { useState } from "react";
+import { Button, FormControl, InputGroup, Modal } from "react-bootstrap";
 
 export function UserInfo(props: any): JSX.Element {
   const resetProfile: {
@@ -36,7 +36,12 @@ export function UserInfo(props: any): JSX.Element {
   return (
     <div>
       <>
-        <InputGroup className={`mb-3`}>
+        <InputGroup
+          className={`mb-3`}
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${!profileValid.name ? "Name value cannot be empty" : ""}`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!profileValid.name ? "bg-danger text-white" : ""}`}
@@ -71,7 +76,14 @@ export function UserInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !profileValid.username ? "Username value cannot be empty" : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${
@@ -102,7 +114,16 @@ export function UserInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !profileValid.email
+              ? "Email value cannot be empty and must be a valid email (person@domain.com)"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!profileValid.email ? "bg-danger text-white" : ""}`}
@@ -131,7 +152,14 @@ export function UserInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !profileValid.password ? "Password value cannot be empty" : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${
@@ -184,7 +212,16 @@ export function UserInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !profileValid.phoneNumber
+              ? "Phone number value cannot be empty. Format xxx-xxx-xxxx"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${
@@ -215,7 +252,16 @@ export function UserInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !profileValid.dob
+              ? "Date of birth value cannot be empty. Format dd/MM/YY"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!profileValid.dob ? "bg-danger text-white" : ""}`}
@@ -277,6 +323,7 @@ export function UserInfo(props: any): JSX.Element {
             variant="primary"
             onClick={() => {
               props.save(profile);
+              props.close();
             }}
           >
             Save User Information

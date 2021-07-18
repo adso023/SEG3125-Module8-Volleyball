@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import Switch from "react-bootstrap/esm/Switch";
 import {
   BrowserRouter as Router,
@@ -6,6 +7,12 @@ import {
   Redirect,
   Route,
 } from "react-router-dom";
+import { HelpHome } from "../help/home/HelpHome";
+import { HelpLessons } from "../help/lessons/HelpLessons";
+import { HelpMessages } from "../help/messages/HelpMessages";
+import { HelpProfile } from "../help/profile/HelpProfile";
+import { HelpSearch } from "../help/search/HelpSearch";
+import { HelpTournaments } from "../help/tournaments/HelpTournaments";
 import { Home } from "../home/Home";
 import { Lessons } from "../home/lessons/Lessons";
 import { Tournament } from "../home/tournaments/Tournament";
@@ -14,22 +21,53 @@ import { Profile } from "../profile/Profile";
 import { Search } from "../search/Search";
 import "./App.css";
 
+// tslint:disable-next-line: typedef
+const helpToComponentMap: { [key: string]: JSX.Element } = {
+  HOME: <HelpHome />,
+  MESSAGES: <HelpMessages />,
+  SEARCH: <HelpSearch />,
+  LESSONS: <HelpLessons />,
+  TOURNAMENTS: <HelpTournaments />,
+  PROFILE: <HelpProfile />,
+};
+
 function App(): JSX.Element {
+  const [show, setShow] = useState(false);
+  // tslint:disable-next-line: typedef
+  const handleClose = () => setShow(false);
+  // tslint:disable-next-line: typedef
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
+    // tslint:disable-next-line: typedef
     const upcoming = {
       lessons: [
         {
-          name: "Spikes Learn-to-Play",
-          date: "2021/07/19 - 2021/07/24",
-          instructor: "James Spalding",
+          title: "Spikes Learn-to-Play",
+          subTitle: "Learn to play the game of volleyball from form to rules",
+          date: "August 19, 2021 - August 24, 2021",
+          instructor: "John John",
         },
         {
-          name: "",
-          date: "2021/07/19 - 2021/07/24",
-          instructor: "James Spalding",
+          title: "Novice Bump and Set Lessons",
+          subTitle: "Bump lessons for beginners",
+          instructor: "John John",
+          date: "July 27, 2021 - July 30, 2021",
         },
       ],
-      tournaments: {},
+      tournaments: [
+        {
+          title: "Tournament - Intermediate challenge",
+          subTitle: "Tournament for intermediate members in the club",
+          date: "August 13, 2021",
+        },
+        {
+          title: "Tournament - Members vs Outsiders",
+          subTitle:
+            "Tournament for members and non-members who want to participate",
+          date: "August 10, 2021",
+        },
+      ],
     };
 
     const profile: {
@@ -77,6 +115,15 @@ function App(): JSX.Element {
     localStorage.setItem("upcoming", JSON.stringify(upcoming));
     localStorage.setItem("profile", JSON.stringify(profile));
   }, []);
+
+  // tslint:disable-next-line: typedef
+  const helpHeading = () =>
+    window.location.href
+      .substring(
+        window.location.href.lastIndexOf("/") + 1,
+        window.location.href.length
+      )
+      .toUpperCase();
 
   return (
     <Router>
@@ -145,6 +192,27 @@ function App(): JSX.Element {
         </Route>
       </Switch>
 
+      {/* Help Modal */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>{`Help for ${helpHeading()} Page`}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{helpToComponentMap[helpHeading()]}</Modal.Body>
+        <Modal.Footer className="d-flex justify-content-between">
+          <div>
+            <a href="https://github.com/adso023/SEG3125-Module8-Volleyball">
+              SEG3125-Module8 Gihub Repository
+            </a>
+            <div style={{ maxWidth: "350px" }}>
+              Plain Link: https://github.com/adso023/SEG3125-Module8-Volleyball
+            </div>
+          </div>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <footer className="fixed-bottom d-flex justify-content-around p-2 bg-light">
         <Link to="/search">
           <div
@@ -164,6 +232,7 @@ function App(): JSX.Element {
           data-bs-placement="top"
           title="Help for FAQs"
           style={{ fontSize: "20px", fontWeight: "bolder" }}
+          onClick={handleShow}
         >
           <i className="bi bi-question-circle"></i>
         </div>

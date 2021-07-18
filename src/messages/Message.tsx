@@ -11,13 +11,13 @@ export function Messages(): JSX.Element {
   const buildMessage = () => {
     const messages: JSX.Element[] = [
       ...msgs,
-      <div className="msgWrapper you">
+      <div className="msgWrapper you" id={(Math.random() * 10000).toString()}>
         <div className="message">
           <div className="text-white member">Me</div>
           <div className="bubble">{msg}</div>
         </div>
       </div>,
-      <div className="msgWrapper other">
+      <div className="msgWrapper other" id={(Math.random() * 10000).toString()}>
         <div className="message">
           <div className="text-white member">Instructor John John</div>
           <div className="bubble">
@@ -37,13 +37,6 @@ export function Messages(): JSX.Element {
         <div id="messageAside">
           <div id="1" className="d-flex viewing">
             <div>
-              {/* <img
-                width="50"
-                height="50"
-                src="../../public/message.svg"
-                alt="Message"
-                title="Message"
-              ></img> */}
               <Image />
             </div>
             <div className="messageTile">Instructor: John John</div>
@@ -51,13 +44,19 @@ export function Messages(): JSX.Element {
         </div>
         <div id="messageView">
           <div id="messageList">
-            <div className="msgWrapper you">
+            <div
+              className="msgWrapper you"
+              id={(Math.random() * 10000).toString()}
+            >
               <div className="message">
                 <div className="text-white member">Me</div>
                 <div className="bubble">Hello</div>
               </div>
             </div>
-            <div className="msgWrapper other">
+            <div
+              className="msgWrapper other"
+              id={(Math.random() * 10000).toString()}
+            >
               <div className="message">
                 <div className="text-white member">Instructor John John</div>
                 <div className="bubble">Hi Derek</div>

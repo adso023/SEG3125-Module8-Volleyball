@@ -19,7 +19,16 @@ export function PaymentInfo(props: any): JSX.Element {
   return (
     <div>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !cardInfoValid.cardNumber
+              ? "Card number cannot be empty and must be within 13 to 16 numbers in length"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${
@@ -75,7 +84,16 @@ export function PaymentInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !cardInfoValid.cvv2
+              ? "Cvv2 number cannot be empty and typically 3 numbers in length"
+              : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!cardInfoValid.cvv2 ? "bg-danger text-white" : ""}`}
@@ -104,7 +122,14 @@ export function PaymentInfo(props: any): JSX.Element {
         </InputGroup>
       </>
       <>
-        <InputGroup className="mb-3">
+        <InputGroup
+          className="mb-3"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={`${
+            !cardInfoValid.exp ? "Exp value cannot be empty, format MM/YY" : ""
+          }`}
+        >
           <InputGroup.Text
             id="basic-addon1"
             className={`${!cardInfoValid.exp ? "bg-danger text-white" : ""}`}
