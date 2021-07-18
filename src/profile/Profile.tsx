@@ -38,12 +38,7 @@ export function Profile(): JSX.Element {
   return (
     <div id="profileRoot">
       <div id="profileImage">
-        <img
-          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-          alt="Profile Placeholder"
-          width="150px"
-          height="150px"
-        />
+        <i className="bi bi-person-badge" style={{ fontSize: "100px" }}></i>
         <div className="text-muted fw-bold">
           {profile.name} &middot; {profile.memberID}
         </div>
