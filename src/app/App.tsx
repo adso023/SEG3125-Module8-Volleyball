@@ -201,7 +201,7 @@ function App(): JSX.Element {
         <Modal.Footer className="d-flex justify-content-between">
           <div>
             <a href="https://github.com/adso023/SEG3125-Module8-Volleyball">
-              SEG3125-Module8 Gihub Repository
+              SEG3125-Module8 Github Repository
             </a>
             <div style={{ maxWidth: "350px" }}>
               Plain Link: https://github.com/adso023/SEG3125-Module8-Volleyball
