@@ -7,8 +7,30 @@
   margin-left: 10px;
 }
 
-#filtersBar {
+#completionList {
+  margin: 0px 10px;
+}
+
+#filterWrapper {
   margin: 10px;
+}
+
+.item {
+  position: relative;
+  border: 1px solid green;
+  padding: 0 8px;
+  border-radius: 5px;
+  transition: box-shadow 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.item:hover {
+  box-shadow: 2px 3px 2px greenyellow, 2px 2px 2px seagreen;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .chip {

@@ -1,0 +1,115 @@
+#messageRoot > h5 {
+  margin-left: 20px;
+}
+
+#messageView {
+  min-height: 80vh;
+  width: 100%;
+  margin-left: 10px;
+  background: lightslategrey;
+  position: relative;
+}
+
+#messageList {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 7px;
+  overflow: overlay;
+  scrollbar-width: none;
+}
+
+#messageList::-webkit-scrollbar {
+  display: none;
+}
+
+.messageTile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12px;
+}
+
+.you.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 5px;
+}
+
+.other.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+}
+
+.member {
+  font-size: 12px;
+}
+
+.msgWrapper.you {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.msgWrapper.other {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.you .bubble {
+  max-width: 300px;
+  width: fit-content;
+  min-width: fit-content;
+  padding: 12px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.other .bubble {
+  max-width: 300px;
+  width: fit-content;
+  min-width: fit-content;
+  padding: 12px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+#messageTextBox {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#messageTextBox > input {
+  margin-top: 0;
+  height: 50px;
+  border-radius: 5px;
+}
+
+#messageTextBox > button {
+  height: 50px;
+  font-size: 25px;
+}
+
+#messageAside {
+  border-right: 1px solid grey;
+  padding: 0 10px;
+}
+
+.viewing {
+  background: greenyellow;
+}

@@ -31,7 +31,51 @@ function App(): JSX.Element {
       ],
       tournaments: {},
     };
+
+    const profile: {
+      name: string;
+      memberID: number;
+      username: string;
+      email: string;
+      password: string;
+      phoneNumber: string;
+      dob: string;
+      address: {
+        streetName: string;
+        city: string;
+        postalCode: string;
+        country: string;
+        unitOrHouseNumber: number;
+      };
+      cardInfo: {
+        cardNumber: string;
+        cvv2: number;
+        exp: string;
+      };
+    } = {
+      name: "Derek Morgan",
+      memberID: Math.random() * 10000000,
+      username: "derek.morgan",
+      email: "derek.morgan@fbi.com",
+      password: "not-secure-password@fake-data",
+      phoneNumber: "111-222-3333",
+      dob: "12/12/00", // mm/dd/yy
+      address: {
+        streetName: "Some Street St",
+        city: "Some City",
+        postalCode: "H0H H0H",
+        country: "Some Country",
+        unitOrHouseNumber: 12,
+      },
+      cardInfo: {
+        cardNumber: "4444 4444 4444 4444",
+        cvv2: 444,
+        exp: "04/04",
+      },
+    };
+
     localStorage.setItem("upcoming", JSON.stringify(upcoming));
+    localStorage.setItem("profile", JSON.stringify(profile));
   }, []);
 
   return (
